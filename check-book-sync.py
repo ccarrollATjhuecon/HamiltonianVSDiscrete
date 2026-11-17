@@ -50,8 +50,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 RAW = 'https://raw.githubusercontent.com/intertemporal-choice/intertemporal-choice.github.io/{ref}/{path}'
 # The chapter's path, newest first: book PR #83 (0d30dd3) moved it into a folder of its own.
 CHAPTERS = ('content/appendices/mathematical/HamiltonianVSDiscrete.md',)
-START = 'solves a continuous-time version'  # the first words of the shared text
-END = '\\end{document}'  # the handout's text runs to here; it has no bibliography or appendix
+START = 'derives the optimality conditions'  # the first words of the shared text
+END = '\\bibliographystyle'  # the handout's text runs to its bibliography; it has no appendix
 REGISTRY = '@resources/notation/econark-math.yml'
 LOCAL_STY = os.path.join('@local', 'HamiltonianVSDiscrete.sty')
 
@@ -70,11 +70,13 @@ ACCEPTED_REWRITES = [
 
 # (the handout's words just before it, handout words, book words, why accepted)
 ACCEPTED_TEXT = [
-    (') where the time interval is now 1 /', 'J th', 'Jth', 'the same text; the two sides tokenize "$1/J$th" differently'),
+    ('per - period factors the', 'J th', 'Jth', 'the same text; the two sides tokenize "$J$th" differently'),
 ]
 
 # The book's links to labels in other chapters, and the address the handout gives each.
-CROSS_CHAPTER = {}
+CROSS_CHAPTER = {
+    '#eq:RCK-maxprob': 'https://intertemporal-choice.github.io/content/growth/ramseycasskoopmans/#eq-rck-maxprob',
+}
 
 # The page has no notebook beside it.
 NOTEBOOK = None
@@ -97,7 +99,8 @@ RAW_ALLOWED = [
     (r'd(?=\s*(?:\^\{?\d\}?\s*)?(?:[A-Za-z]|\\[A-Za-z]))', 'the differential, as in dt or d^{2}c'),
     (r'd(?=\s*/\s*dt)', 'the derivative d/dt'),
     (r'J(?![A-Za-z])', 'the number of periods in a year, a count'),
-    (r'z(?![A-Za-z])', 'the throwaway argument of e^{z} \\approx 1+z'),
+    (r's(?![A-Za-z])', 'the index of a product over dates'),
+    (r'\\tau(?![A-Za-z])', 'the variable of integration over dates'),
     (r'\\Delta(?![A-Za-z])', 'the difference operator'),
 ]
 
@@ -468,7 +471,8 @@ def check_raw_letters(plain, problems):
     for offset, span in spans:
         # Blank out what isn't a letter of the math: environment names, labels and text, then every
         # command except a Greek letter.
-        masked = re.sub(r'\\(?:begin|end|label|text|textrm|mbox|operatorname)\{[^{}]*\}', blank, span)
+        masked = re.sub(r'\\begin\{array\}\{[lcr|]*\}', blank, span)  # an array's column letters
+        masked = re.sub(r'\\(?:begin|end|label|text|textrm|mbox|operatorname)\{[^{}]*\}', blank, masked)
         masked = re.sub(r'\\[A-Za-z]+', lambda m: m[0] if m[0][1:] in GREEK else blank(m), masked)
         masked = re.sub(r'\\[^A-Za-z]', blank, masked)
         for m in re.finditer(r'\\[A-Za-z]+|[A-Za-z]', masked):

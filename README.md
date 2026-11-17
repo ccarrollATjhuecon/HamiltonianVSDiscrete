@@ -15,5 +15,7 @@ its discrete-time Bellman counterpart.
   checks rule D: every object written with its macro.
 - `@local/HamiltonianVSDiscrete.sty` defines the objects the registry lacks: the costate `\vk`, the
   Hamiltonian `\Ham` and the continuous-time value function `\VFuncCts`.
+- `HamiltonianVSDiscrete.bib` holds the entries the handout cites, copied from texmf-local's `economics.bib`;
+  the empty `system.bib` keeps the build to them, as in the RamseyCassKoopmans handout.
 
 Revived on 2026-11-16 from the 2021 handout (the first commit holds it as found).
