@@ -168,17 +168,18 @@ Benjamin Moll's \href{https://benjaminmoll.com/wp-content/uploads/2019/07/Lectur
 
 \section{Summary}
 
-Each condition of the continuous-time solution, beside its discrete-time counterpart, in order: the value function, the condition for optimal consumption, the costate equation, the accumulation equation, the transversality condition, and consumption growth for CRRA utility:
+Each condition of the continuous-time solution, beside its discrete-time counterpart (consumption growth for CRRA utility):
 
 \begin{equation*}
-\begin{array}{ll}
-  \text{continuous time} & \text{discrete time}
-\\ \discRte\VFuncCts(\kap)=\max_{\cNrm}\Ham(\kap,\cNrm,\VFuncCts'(\kap)) & \VFunc(\mNrm_{t})=\max_{\cNrm_{t}}\{\uFunc(\cNrm_{t})+\DiscFac\VFunc(\mNrm_{t+1})\}
-\\ \uFunc^{\prime}(\cNrm)=\vk=\VFuncCts'(\kap) & \uFunc^{\prime}(\cNrm_{t})=\VFunc^{\prime}(\mNrm_{t})
-\\ \dot{\vk}/\vk=\discRte-(\rfree-\PopnGroRte) & \VFunc^{\prime}(\mNrm_{t})=\DiscFac\Rfree_{t+1}\VFunc^{\prime}(\mNrm_{t+1})
-\\ \dot{\kap}=\fFunc(\kap)-\cNrm-(\PopnGroRte+\deprRte)\kap & \kap_{t+1}=(\mNrm_{t}-\cNrm_{t})/(1+\PopnGroRte)
-\\ \lim_{t\rightarrow\infty}e^{-\discRte t}\vk\kap=0 & \lim_{t\rightarrow\infty}\DiscFac^{t}\uFunc^{\prime}(\cNrm_{t})\kap_{t}=0
-\\ \dot{\cNrm}/\cNrm=\CRRA^{-1}(\rfree-\PopnGroRte-\discRte) & \cNrm_{t+1}/\cNrm_{t}=(\DiscFac\Rfree_{t+1})^{1/\CRRA}
+\begin{array}{lll}
+  & \text{continuous time} & \text{discrete time}
+\\ \text{value} & \discRte\VFuncCts(\kap) & \VFunc(\mNrm_{t})=\max_{\cNrm_{t}}\{\uFunc(\cNrm_{t})
+\\ & \quad =\max_{\cNrm}\Ham(\kap,\cNrm,\VFuncCts'(\kap)) & \quad +\DiscFac\VFunc(\mNrm_{t+1})\}
+\\ \text{consumption} & \uFunc^{\prime}(\cNrm)=\vk=\VFuncCts'(\kap) & \uFunc^{\prime}(\cNrm_{t})=\VFunc^{\prime}(\mNrm_{t})
+\\ \text{marginal value} & \dot{\vk}/\vk=\discRte-(\rfree-\PopnGroRte) & \VFunc^{\prime}(\mNrm_{t})=\DiscFac\Rfree_{t+1}\VFunc^{\prime}(\mNrm_{t+1})
+\\ \text{resources} & \dot{\kap}=\fFunc(\kap)-\cNrm-(\PopnGroRte+\deprRte)\kap & \kap_{t+1}=(\mNrm_{t}-\cNrm_{t})/(1+\PopnGroRte)
+\\ \text{transversality} & \lim_{t\rightarrow\infty}e^{-\discRte t}\vk\kap=0 & \lim_{t\rightarrow\infty}\DiscFac^{t}\uFunc^{\prime}(\cNrm_{t})\kap_{t}=0
+\\ \text{consumption growth} & \dot{\cNrm}/\cNrm=\CRRA^{-1}(\rfree-\PopnGroRte-\discRte) & \cNrm_{t+1}/\cNrm_{t}=(\DiscFac\Rfree_{t+1})^{1/\CRRA}
 \end{array}
 \end{equation*}
 
