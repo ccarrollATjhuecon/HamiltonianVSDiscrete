@@ -162,25 +162,25 @@ Modern treatments write a continuous-time problem like this one as a single equa
 \begin{equation}
   \discRte \VFuncCts(\kap) = \max_{\cNrm} \{\uFunc(\cNrm) + \VFuncCts'(\kap)(\fFunc(\kap)-\cNrm-(\PopnGroRte+\deprRte)\kap)\} = \max_{\cNrm} \Ham(\kap,\cNrm,\VFuncCts'(\kap)) . \label{eq:HVD-hjb}
 \end{equation}
-It is the \hyperref[eq:HVD-bellman]{Bellman equation} taken to continuous time. Read as an asset-pricing equation, it says that the return required on the value of the problem, $\discRte \VFuncCts(\kap)$, equals the dividend, the flow of utility $\uFunc(\cNrm)$, plus the capital gain, $\VFuncCts'(\kap)\dot{\kap}$. Its maximand is the current-value Hamiltonian with the costate set to $\vk = \VFuncCts'(\kap)$, hence the ``Hamilton'' in its name. Its first-order condition is \hyperref[eq:uceqvk]{the condition for optimal consumption}; and differentiating it with respect to $\kap$, by the envelope theorem, gives $\discRte \VFuncCts'(\kap) = \VFuncCts''(\kap)\dot{\kap} + \VFuncCts'(\kap)(\rfree-\PopnGroRte)$, which, since $\dot{\vk} = \VFuncCts''(\kap)\dot{\kap}$, is \hyperref[eq:lamgrow]{the costate equation}. The Hamiltonian's conditions describe the optimal path from one starting point; the HJB equation describes the whole value function at once, which is what numerical methods solve for.
+It is the \hyperref[eq:HVD-bellman]{Bellman equation} taken to continuous time. Read as an asset-pricing equation, it says that the return required on the value of the problem, $\discRte \VFuncCts(\kap)$, equals the dividend, the flow of utility $\uFunc(\cNrm)$, plus the capital gain, $\VFuncCts'(\kap)\dot{\kap}$. Its maximand is the current-value Hamiltonian with the costate set to $\vk = \VFuncCts'(\kap)$, hence the ``Hamilton'' in its name. Its first-order condition is \hyperref[eq:uceqvk]{the condition for optimal consumption}; and differentiating it with respect to $\kap$, by the envelope theorem, gives $\discRte \VFuncCts'(\kap) = \VFuncCts''(\kap)\dot{\kap} + \VFuncCts'(\kap)(\rfree-\PopnGroRte)$, which, since $\dot{\vk} = \VFuncCts''(\kap)\dot{\kap}$, is \hyperref[eq:lamgrow]{the costate equation}. The Hamiltonian's conditions describe the optimal path from one starting point; the HJB equation describes the whole value function at once, which is what many numerical methods solve for.
 
-Benjamin Moll's \href{https://benjaminmoll.com/wp-content/uploads/2019/07/Lecture3_2149.pdf}{lecture notes on HJB equations} derive the equation from the discrete-time Bellman equation of the neoclassical growth model and show its connection to the Hamiltonian; Wikipedia's \href{https://en.wikipedia.org/wiki/Hamilton\%E2\%80\%93Jacobi\%E2\%80\%93Bellman_equation}{article on the HJB equation} states it in general. \citet{achdouHACT} write the problem of each household facing uninsurable income risk as an HJB equation and the distribution of wealth as a Kolmogorov forward equation, which makes a heterogeneous-agent model a system of two partial differential equations; theirs is the form most of the modern continuous-time literature in macroeconomics uses.
+Benjamin Moll's \href{https://benjaminmoll.com/wp-content/uploads/2019/07/Lecture3_2149.pdf}{lecture notes on HJB equations} derive the equation from the discrete-time Bellman equation of the neoclassical growth model and show its connection to the Hamiltonian; Wikipedia's \href{https://en.wikipedia.org/wiki/Hamilton\%E2\%80\%93Jacobi\%E2\%80\%93Bellman_equation}{article on the HJB equation} states it in general. \citet{achdouHACT} write the problem of each household facing uninsurable income risk as an HJB equation and the distribution of wealth as a Kolmogorov forward equation, which makes a heterogeneous-agent model a system of two partial differential equations; theirs is the form much of the modern continuous-time literature in macroeconomics uses.
 
 \section{Summary}
 
-Each condition of the continuous-time solution, beside its discrete-time counterpart (consumption growth for CRRA utility):
+Each condition of the continuous-time solution, beside its discrete-time counterpart, in order: the value function, the condition for optimal consumption, the costate equation, the accumulation equation, the transversality condition, and consumption growth for CRRA utility:
 
-{\small\begin{equation*}
-\begin{array}{lll}
-  & \text{continuous time} & \text{discrete time}
-\\ \text{value} & \discRte\VFuncCts(\kap)=\max_{\cNrm}\Ham(\kap,\cNrm,\VFuncCts'(\kap)) & \VFunc(\mNrm_{t})=\max_{\cNrm_{t}}\{\uFunc(\cNrm_{t})+\DiscFac\VFunc(\mNrm_{t+1})\}
-\\ \text{consumption} & \uFunc^{\prime}(\cNrm)=\vk=\VFuncCts'(\kap) & \uFunc^{\prime}(\cNrm_{t})=\VFunc^{\prime}(\mNrm_{t})
-\\ \text{marginal value} & \dot{\vk}/\vk=\discRte-(\rfree-\PopnGroRte) & \VFunc^{\prime}(\mNrm_{t})=\DiscFac\Rfree_{t+1}\VFunc^{\prime}(\mNrm_{t+1})
-\\ \text{resources} & \dot{\kap}=\fFunc(\kap)-\cNrm-(\PopnGroRte+\deprRte)\kap & \kap_{t+1}=(\mNrm_{t}-\cNrm_{t})/(1+\PopnGroRte)
-\\ \text{transversality} & \lim_{t\rightarrow\infty}e^{-\discRte t}\vk\kap=0 & \lim_{t\rightarrow\infty}\DiscFac^{t}\uFunc^{\prime}(\cNrm_{t})\kap_{t}=0
-\\ \text{consumption growth} & \dot{\cNrm}/\cNrm=\CRRA^{-1}(\rfree-\PopnGroRte-\discRte) & \cNrm_{t+1}/\cNrm_{t}=(\DiscFac\Rfree_{t+1})^{1/\CRRA}
+\begin{equation*}
+\begin{array}{ll}
+  \text{continuous time} & \text{discrete time}
+\\ \discRte\VFuncCts(\kap)=\max_{\cNrm}\Ham(\kap,\cNrm,\VFuncCts'(\kap)) & \VFunc(\mNrm_{t})=\max_{\cNrm_{t}}\{\uFunc(\cNrm_{t})+\DiscFac\VFunc(\mNrm_{t+1})\}
+\\ \uFunc^{\prime}(\cNrm)=\vk=\VFuncCts'(\kap) & \uFunc^{\prime}(\cNrm_{t})=\VFunc^{\prime}(\mNrm_{t})
+\\ \dot{\vk}/\vk=\discRte-(\rfree-\PopnGroRte) & \VFunc^{\prime}(\mNrm_{t})=\DiscFac\Rfree_{t+1}\VFunc^{\prime}(\mNrm_{t+1})
+\\ \dot{\kap}=\fFunc(\kap)-\cNrm-(\PopnGroRte+\deprRte)\kap & \kap_{t+1}=(\mNrm_{t}-\cNrm_{t})/(1+\PopnGroRte)
+\\ \lim_{t\rightarrow\infty}e^{-\discRte t}\vk\kap=0 & \lim_{t\rightarrow\infty}\DiscFac^{t}\uFunc^{\prime}(\cNrm_{t})\kap_{t}=0
+\\ \dot{\cNrm}/\cNrm=\CRRA^{-1}(\rfree-\PopnGroRte-\discRte) & \cNrm_{t+1}/\cNrm_{t}=(\DiscFac\Rfree_{t+1})^{1/\CRRA}
 \end{array}
-\end{equation*}}
+\end{equation*}
 
 \bibliographystyle{econark}
 \bibliography{\bibfilesfound}
