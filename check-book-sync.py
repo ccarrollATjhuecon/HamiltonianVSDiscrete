@@ -65,7 +65,6 @@ BOOK_TO_HANDOUT = {'cons': 'cNrm', 'timeRate': 'discRte', 'popGro': 'PopnGroRte'
 # (book pattern, what the handout writes, why the difference is accepted)
 ACCEPTED_REWRITES = [
     (r'\\mathcal\{V\}', r'\\VFuncCts', "the page writes curly V raw; the handout's @local macro prints it (rule D)"),
-    (r'\\mathcal\{H\}', r'\\Ham', "the page writes the Hamiltonian's curly H raw; the handout's @local macro prints it (rule D)"),
 ]
 
 # (the handout's words just before it, handout words, book words, why accepted)
@@ -106,7 +105,7 @@ RAW_ALLOWED = [
 
 # Letters the page still writes raw, where the handout writes the macro that prints the same letter
 # (rule D): (the book's raw letter, the handout's macro). Read only inside the book's math.
-RAW_IN_BOOK = {'\\lambda': 'vk', 'V': 'VFunc'}  # the costate, raw in the page; \\vk in the RCK chapter and here
+RAW_IN_BOOK = {'V': 'VFunc'}  # the page writes the costate as \\vk since book #113 (3838942), so \\lambda left
 
 COMMENT = r'(?<!\\)%.*$'
 BOOK_DIR = None  # a local checkout of the book, from --book-dir
