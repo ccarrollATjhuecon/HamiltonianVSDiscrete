@@ -13,8 +13,8 @@ its discrete-time Bellman counterpart.
   `./check-book-sync.py --book-git <clone> --ref <commit>` for an unpushed book commit. It compares the words,
   the notes (a `\marginFootnote` here is a margin note in the book), the links and the printed symbols, and
   checks rule D: every object written with its macro.
-- `@local/HamiltonianVSDiscrete.sty` defines the objects the registry lacks: the costate `\vk`, the
-  Hamiltonian `\Ham` and the continuous-time value function `\VFuncCts`.
+- `@local/HamiltonianVSDiscrete.sty` defines no notation, only `\marginFootnote`. Since cb37545 (registry v14.1.0)
+  the registry has the costate `\vk`, the Hamiltonian `\Ham` and the continuous-time value function `\VFuncCts`.
 - `HamiltonianVSDiscrete.bib` holds the entries the handout cites, copied from texmf-local's `economics.bib`;
   the empty `system.bib` keeps the build to them, as in the RamseyCassKoopmans handout.
 
