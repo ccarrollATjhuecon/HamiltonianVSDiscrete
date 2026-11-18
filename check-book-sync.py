@@ -55,17 +55,15 @@ END = '\\bibliographystyle'  # the handout's text runs to its bibliography; it h
 REGISTRY = '@resources/notation/econark-math.yml'
 LOCAL_STY = os.path.join('@local', 'HamiltonianVSDiscrete.sty')
 
-# A course macro the page writes, and the registry name the handout writes for the same object. The page
-# still writes the course names (\cons, \timeRate, \popGro, \depr, \Discount); the handout writes the
-# registry's, under Chris's 2026-11-16 09:28:16 ruling. They print the same; an entry the page stops using
-# is reported.
-BOOK_TO_HANDOUT = {'cons': 'cNrm', 'timeRate': 'discRte', 'popGro': 'PopnGroRte', 'depr': 'deprRte',
-                   'Discount': 'DiscFac'}
+# A course macro the page writes, and the registry name the handout writes for the same object, which prints
+# the same (the handout writes the registry's names, under Chris's 2026-11-16 09:28:16 ruling); an entry the
+# page stops using is reported. Empty since book #118 (aae5b65, stage 1, 2026-11-18), from which the page
+# writes the registry's names too: \cNrm, \discRte, \PopnGroRte, \deprRte, \DiscFac.
+BOOK_TO_HANDOUT = {}
 
-# (book pattern, what the handout writes, why the difference is accepted)
-ACCEPTED_REWRITES = [
-    (r'\\mathcal\{V\}', r'\\VFuncCts', "the page writes curly V raw; the handout's @local macro prints it (rule D)"),
-]
+# (book pattern, what the handout writes, why the difference is accepted). Empty since book #117 (ae0d772),
+# from which the page writes the curly V as the registry's \VFuncCts, as the handout does.
+ACCEPTED_REWRITES = []
 
 # (the handout's words just before it, handout words, book words, why accepted)
 ACCEPTED_TEXT = [
@@ -104,8 +102,9 @@ RAW_ALLOWED = [
 ]
 
 # Letters the page still writes raw, where the handout writes the macro that prints the same letter
-# (rule D): (the book's raw letter, the handout's macro). Read only inside the book's math.
-RAW_IN_BOOK = {'V': 'VFunc'}  # the page writes the costate as \\vk since book #113 (3838942), so \\lambda left
+# (rule D): (the book's raw letter, the handout's macro). Read only inside the book's math. Empty since book
+# #117 (ae0d772), from which the page writes the roman V as \VFunc; the costate is \vk since book #113 (3838942).
+RAW_IN_BOOK = {}
 
 COMMENT = r'(?<!\\)%.*$'
 BOOK_DIR = None  # a local checkout of the book, from --book-dir

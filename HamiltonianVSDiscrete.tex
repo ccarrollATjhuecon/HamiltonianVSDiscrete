@@ -34,14 +34,14 @@ The problem is to choose a path of consumption per capita $\cNrm$ from the prese
 \end{equation}
 subject to
 \begin{equation*}\begin{gathered}\begin{aligned}
-        \dot{\kap} & =  \fFunc(\kap) - \cNrm - (\PopnGroRte+\deprRte)\kap
-\\      \kap & >  0 ~\forall~t
+        \dot{\kNrm} & =  \fFunc(\kNrm) - \cNrm - (\PopnGroRte+\deprRte)\kNrm
+\\      \kNrm & >  0 ~\forall~t
 \end{aligned}\end{gathered}\end{equation*}
-where $\discRte$ is the time preference rate, $\PopnGroRte$ is the population growth rate, and $\deprRte$ is the depreciation rate. Every variable is a function of time; the argument $t$ is omitted.\marginFootnote{The population growth rate is written $\PopnGroRte$: $\PopnGroFac$ is the population's growth factor and $\lnat$ is the natural log, so $\PopnGroRte = \log \PopnGroFac$. In discrete time, where the population grows by the factor $\PopnGroFac$ a period, $\PopnGroRte$ stands for the net rate $\PopnGroFac-1$, which it approximates when growth is slow.} Capital at date 0, $\kap(0)$, is given. Write $\rfree \equiv \fFunc^{\prime}(\kap)-\deprRte$ for the net return on capital, so that $\rfree-\PopnGroRte$ is its return per person, net of the dilution that population growth brings. All of these rates are measured at an annual rate.
+where $\discRte$ is the time preference rate, $\PopnGroRte$ is the population growth rate, and $\deprRte$ is the depreciation rate. Every variable is a function of time; the argument $t$ is omitted.\marginFootnote{The population growth rate is written $\PopnGroRte$: $\PopnGroFac$ is the population's growth factor and $\lnat$ is the natural log, so $\PopnGroRte = \log \PopnGroFac$. In discrete time, where the population grows by the factor $\PopnGroFac$ a period, $\PopnGroRte$ stands for the net rate $\PopnGroFac-1$, which it approximates when growth is slow.} Capital at date 0, $\kNrm(0)$, is given. Write $\rfree \equiv \fFunc^{\prime}(\kNrm)-\deprRte$ for the net return on capital, so that $\rfree-\PopnGroRte$ is its return per person, net of the dilution that population growth brings. All of these rates are measured at an annual rate.
 
-The discrete-time version of the problem measures the state at the start of period $t$ by market resources, $\mNrm_{t} = \fFunc(\kap_{t}) + (1-\deprRte)\kap_{t}$. What is not consumed becomes the next period's capital, shared among a population larger by the factor $1+\PopnGroRte$, and the value function $\VFunc$ satisfies the Bellman equation:
+The discrete-time version of the problem measures the state at the start of period $t$ by market resources, $\mNrm_{t} = \fFunc(\kNrm_{t}) + (1-\deprRte)\kNrm_{t}$. What is not consumed becomes the next period's capital, shared among a population larger by the factor $1+\PopnGroRte$, and the value function $\VFunc$ satisfies the Bellman equation:
 \begin{equation}\begin{gathered}\begin{aligned}
-        \kap_{t+1} & =  (\mNrm_{t}-\cNrm_{t})/(1+\PopnGroRte)
+        \kNrm_{t+1} & =  (\mNrm_{t}-\cNrm_{t})/(1+\PopnGroRte)
 \\      \VFunc(\mNrm_{t}) & =  \max_{\cNrm_{t}} \{\uFunc(\cNrm_{t}) + \DiscFac \VFunc(\mNrm_{t+1})\} .
 \end{aligned}\end{gathered}\label{eq:HVD-bellman}\end{equation}
 Its first-order condition and the envelope theorem give
@@ -50,19 +50,19 @@ Its first-order condition and the envelope theorem give
 \end{equation}
 and
 \begin{equation}
-  \VFunc^{\prime}(\mNrm_{t}) = \DiscFac \Rfree_{t+1} \VFunc^{\prime}(\mNrm_{t+1}), \qquad \Rfree_{t+1} \equiv (1+\fFunc^{\prime}(\kap_{t+1})-\deprRte)/(1+\PopnGroRte), \label{eq:HVD-discEuler}
+  \VFunc^{\prime}(\mNrm_{t}) = \DiscFac \Rfree_{t+1} \VFunc^{\prime}(\mNrm_{t+1}), \qquad \Rfree_{t+1} \equiv (1+\fFunc^{\prime}(\kNrm_{t+1})-\deprRte)/(1+\PopnGroRte), \label{eq:HVD-discEuler}
 \end{equation}
 where $\Rfree_{t+1}$ is the gross return, per person, on a unit of resources saved in period $t$.
 
 \section{The Hamiltonian's Conditions}
 
-The value of the continuous-time problem as a function of initial capital is $\VFuncCts(\kap)$, a curly V to parallel the roman $\VFunc$ of the discrete-time value function.
+The value of the continuous-time problem as a function of initial capital is $\VFuncCts(\kNrm)$, a curly V to parallel the roman $\VFunc$ of the discrete-time value function.
 
 The current-value Hamiltonian is
 \begin{equation}
-  \Ham(\kap,\cNrm,\vk) = \uFunc(\cNrm) + (\fFunc(\kap)-\cNrm-(\PopnGroRte+\deprRte)\kap)\vk \label{eq:hamilt}
+  \Ham(\kNrm,\cNrm,\vk) = \uFunc(\cNrm) + (\fFunc(\kNrm)-\cNrm-(\PopnGroRte+\deprRte)\kNrm)\vk \label{eq:hamilt}
 \end{equation}
-where $\kap$ is the state variable, $\cNrm$ is the control variable, and
+where $\kNrm$ is the state variable, $\cNrm$ is the control variable, and
 $\vk$ is the costate variable.
 
 $\vk$ is the continuous-time equivalent of a Lagrange
@@ -70,32 +70,32 @@ multiplier, so its value should be equivalent to the value of relaxing
 the corresponding constraint by an infinitesimal amount. But the
 constraint in question is the capital-accumulation constraint. Thus
 $\vk$ should be equal to the value of having a tiny bit more
-capital, $\frac{\VFuncCts(\kap+\Delta \kap)-\VFuncCts(\kap)}{\Delta \kap}$. In other words,
-you can think of $\vk=\VFuncCts'(\kap)$.
+capital, $\frac{\VFuncCts(\kNrm+\Delta \kNrm)-\VFuncCts(\kNrm)}{\Delta \kNrm}$. In other words,
+you can think of $\vk=\VFuncCts'(\kNrm)$.
 
 The condition for optimal consumption is
 \begin{equation}\begin{gathered}\begin{aligned}
         \frac{\partial \Ham}{\partial \cNrm} & =  0  \\
         \uFunc^{\prime}(\cNrm) & =  \vk
-\\  \uFunc^{\prime}(\cNrm) & =  \VFuncCts'(\kap) . \label{eq:uceqvk}
+\\  \uFunc^{\prime}(\cNrm) & =  \VFuncCts'(\kNrm) . \label{eq:uceqvk}
 \end{aligned}\end{gathered}\end{equation}
-This is the counterpart of the discrete-time \hyperref[eq:HVD-discFOC]{first-order condition}, $\uFunc^{\prime}(\cNrm_{t})=\VFunc^{\prime}(\mNrm_{t})$, so the intuition for why the marginal utility of consumption should equal the marginal value of extra resources carries over to it.\marginFootnote{In discrete time the identity holds for market resources $\mNrm_{t}$; as the period shrinks, the output produced within it vanishes and $\mNrm_{t}$ becomes $\kap_{t}$, so in continuous time capital is the right measure.}
+This is the counterpart of the discrete-time \hyperref[eq:HVD-discFOC]{first-order condition}, $\uFunc^{\prime}(\cNrm_{t})=\VFunc^{\prime}(\mNrm_{t})$, so the intuition for why the marginal utility of consumption should equal the marginal value of extra resources carries over to it.\marginFootnote{In discrete time the identity holds for market resources $\mNrm_{t}$; as the period shrinks, the output produced within it vanishes and $\mNrm_{t}$ becomes $\kNrm_{t}$, so in continuous time capital is the right measure.}
 
 The costate equation is
 \begin{equation}\begin{gathered}\begin{aligned}
-        \dot{\vk} & =  \discRte\vk - \vk(\fFunc^{\prime}(\kap)-(\PopnGroRte+\deprRte))
+        \dot{\vk} & =  \discRte\vk - \vk(\fFunc^{\prime}(\kNrm)-(\PopnGroRte+\deprRte))
 \\      \dot{\vk}/\vk & =  \discRte-(\rfree-\PopnGroRte) . \label{eq:lamgrow}
 \end{aligned}\end{gathered}\end{equation}
 
 The accumulation equation for capital must also hold,
 \begin{equation}
-  \dot{\kap} = \fFunc(\kap)-\cNrm-(\PopnGroRte+\deprRte)\kap, \label{eq:accum}
+  \dot{\kNrm} = \fFunc(\kNrm)-\cNrm-(\PopnGroRte+\deprRte)\kNrm, \label{eq:accum}
 \end{equation}
 the continuous-time counterpart of the \hyperref[eq:HVD-bellman]{discrete-time accumulation equation}, which we have previously called the Dynamic Budget Constraint.
 
 \section{The Costate Equation as a Limit}
 
-Up to now in this course we haven't thought very much about what the
+Up to now in this book we haven't thought very much about what the
 time period is. Generally, we have expressed things in terms of
 yearly rates, so that for example we might choose $\Rfree=1.04$ and
 $\DiscFac=1/1.04$ to represent an interest rate of
@@ -110,31 +110,31 @@ prediction of the annual model. In general, dividing the year into $J$ periods m
 
 In this model the per-period factors are $\DiscFac = e^{-\discRte/J}$ and $\Rfree_{t+1} \approx e^{(\rfree-\PopnGroRte)/J}$. Taking logs of the \hyperref[eq:HVD-discEuler]{discrete-time Euler equation},
 \begin{equation*}
-  \log \VFunc^{\prime}(\mNrm_{t+1}) - \log \VFunc^{\prime}(\mNrm_{t}) = -\log \DiscFac - \log \Rfree_{t+1} \approx (\discRte-(\rfree-\PopnGroRte))/J,
+  \lnat \VFunc^{\prime}(\mNrm_{t+1}) - \lnat \VFunc^{\prime}(\mNrm_{t}) = -\lnat \DiscFac - \lnat \Rfree_{t+1} \approx (\discRte-(\rfree-\PopnGroRte))/J,
 \end{equation*}
 and multiplying by $J$,
 \begin{equation}
-  J(\log \VFunc^{\prime}(\mNrm_{t+1}) - \log \VFunc^{\prime}(\mNrm_{t})) \approx \discRte-(\rfree-\PopnGroRte) . \label{eq:vpk}
+  J(\lnat \VFunc^{\prime}(\mNrm_{t+1}) - \lnat \VFunc^{\prime}(\mNrm_{t})) \approx \discRte-(\rfree-\PopnGroRte) . \label{eq:vpk}
 \end{equation}
-The left side is the change in $\log \VFunc^{\prime}$ over one period, expressed at an annual rate. As $J \rightarrow \infty$, $\mNrm_{t}$ becomes $\kap$, $\VFunc^{\prime}$ becomes $\VFuncCts'$, and the left side becomes $(d/dt)\log \VFuncCts'(\kap) = \dot{\vk}/\vk$. The approximations become exact in the limit, which leaves \hyperref[eq:lamgrow]{the costate equation}. So the costate equation of the Hamiltonian method is the discrete-time condition $\VFunc^{\prime}(\mNrm_{t})=\DiscFac\Rfree_{t+1}\VFunc^{\prime}(\mNrm_{t+1})$, taken to continuous time.
+The left side is the change in $\lnat \VFunc^{\prime}$ over one period, expressed at an annual rate. As $J \rightarrow \infty$, $\mNrm_{t}$ becomes $\kNrm$, $\VFunc^{\prime}$ becomes $\VFuncCts'$, and the left side becomes $(d/dt)\lnat \VFuncCts'(\kNrm) = \dot{\vk}/\vk$. The approximations become exact in the limit, which leaves \hyperref[eq:lamgrow]{the costate equation}. So the costate equation of the Hamiltonian method is the discrete-time condition $\VFunc^{\prime}(\mNrm_{t})=\DiscFac\Rfree_{t+1}\VFunc^{\prime}(\mNrm_{t+1})$, taken to continuous time.
 
 \section{The Transversality Condition}
 
 Finally, the transversality condition is
 \begin{equation*}
-  \lim_{t \rightarrow \infty} e^{-\discRte t} \vk \kap = 0
+  \lim_{t \rightarrow \infty} e^{-\discRte t} \vk \kNrm = 0
 \end{equation*}
 and its discrete-time counterpart is
 \begin{equation}
-  \lim_{t \rightarrow \infty} \DiscFac^{t} \uFunc^{\prime}(\cNrm_{t}) \kap_{t} = 0. \label{eq:ibc}
+  \lim_{t \rightarrow \infty} \DiscFac^{t} \uFunc^{\prime}(\cNrm_{t}) \kNrm_{t} = 0. \label{eq:HVD-discTVC}
 \end{equation}
-By the discrete-time conditions, for any utility function, $\DiscFac^{t}\uFunc^{\prime}(\cNrm_{t}) = \uFunc^{\prime}(\cNrm_{0})/\prod_{s=1}^{t}\Rfree_{s}$, so the condition says $\lim_{t \rightarrow \infty} \kap_{t}/\prod_{s=1}^{t}\Rfree_{s} = 0$: the present value of capital in the far future is zero. (With a constant $\Rfree$ it reads $\lim_{t \rightarrow \infty} \Rfree^{-t}\kap_{t} = 0$.) In continuous time, the costate equation gives $e^{-\discRte t}\vk = \vk(0)e^{-\int_{0}^{t}(\rfree_{\tau}-\PopnGroRte)\,d\tau}$, so the condition is $\lim_{t \rightarrow \infty} e^{-\int_{0}^{t}(\rfree_{\tau}-\PopnGroRte)\,d\tau}\kap = 0$.
+By the discrete-time conditions, for any utility function, $\DiscFac^{t}\uFunc^{\prime}(\cNrm_{t}) = \uFunc^{\prime}(\cNrm_{0})/\prod_{s=1}^{t}\Rfree_{s}$, so the condition says $\lim_{t \rightarrow \infty} \kNrm_{t}/\prod_{s=1}^{t}\Rfree_{s} = 0$: the present value of capital in the far future is zero. (With a constant $\Rfree$ it reads $\lim_{t \rightarrow \infty} \Rfree^{-t}\kNrm_{t} = 0$.) In continuous time, the costate equation gives $e^{-\discRte t}\vk = \vk(0)e^{-\int_{0}^{t}(\rfree_{\tau}-\PopnGroRte)\,d\tau}$, so the condition is $\lim_{t \rightarrow \infty} e^{-\int_{0}^{t}(\rfree_{\tau}-\PopnGroRte)\,d\tau}\kNrm = 0$.
 
-The constraint $\kap > 0$, like the no-Ponzi condition in the consumer's problem, rules out ending with negative wealth in present value; the transversality condition, an optimality condition, rules out ending with positive wealth in present value, which would be capital never consumed. Together they make the intertemporal budget constraint hold with equality.
+The constraint $\kNrm > 0$, like the no-Ponzi condition in the consumer's problem, rules out ending with negative wealth in present value; the transversality condition, an optimality condition, rules out ending with positive wealth in present value, which would be capital never consumed. Together they make the intertemporal budget constraint hold with equality.
 
-Among the infinite number of time paths of $\cNrm$ and $\kap$ that
+Among the infinite number of time paths of $\cNrm$ and $\kNrm$ that
 satisfy the first-order conditions above, only one also satisfies the
-constraint $\kap > 0$ and this transversality condition. A path that starts
+constraint $\kNrm > 0$ and this transversality condition. A path that starts
 with consumption too high runs capital to zero in finite time; one that starts
 too low accumulates capital past the golden rule, where its return
 $\rfree-\PopnGroRte$ is negative, so the transversality condition fails.
@@ -148,11 +148,11 @@ Now differentiate \hyperref[eq:uceqvk]{the condition for optimal consumption} wi
 divide by $\vk = \uFunc^{\prime}(\cNrm)$, and use \hyperref[eq:lamgrow]{the costate equation}:
 \begin{equation}\begin{gathered}\begin{aligned}
         \frac{\dot{\cNrm} \uFunc^{\prime\prime}(\cNrm)}{\uFunc^{\prime}(\cNrm)} & =  \discRte-(\rfree-\PopnGroRte)  \\
-        \dot{\cNrm} & =  -\frac{\uFunc^{\prime}(\cNrm)}{\uFunc^{\prime\prime}(\cNrm)} (\rfree-\PopnGroRte-\discRte) . \label{eq:trans1}
+        \dot{\cNrm} & =  -\frac{\uFunc^{\prime}(\cNrm)}{\uFunc^{\prime\prime}(\cNrm)} (\rfree-\PopnGroRte-\discRte) . \label{eq:HVD-cdot}
 \end{aligned}\end{gathered}\end{equation}
 For a CRRA utility function $\uFunc(\cNrm)=\cNrm^{1-\CRRA}/(1-\CRRA)$, $-\uFunc^{\prime\prime}(\cNrm) \cNrm/\uFunc^{\prime}(\cNrm) = \CRRA$, so this becomes
 \begin{equation}
-  \dot{\cNrm}/\cNrm = \CRRA^{-1}(\rfree-\PopnGroRte-\discRte) , \label{eq:trans2}
+  \dot{\cNrm}/\cNrm = \CRRA^{-1}(\rfree-\PopnGroRte-\discRte) , \label{eq:HVD-cgrow}
 \end{equation}
 the counterpart of the discrete-time $\cNrm_{t+1}/\cNrm_{t} = (\DiscFac\Rfree_{t+1})^{1/\CRRA}$.
 
@@ -160,9 +160,9 @@ the counterpart of the discrete-time $\cNrm_{t+1}/\cNrm_{t} = (\DiscFac\Rfree_{t
 
 Modern treatments write a continuous-time problem like this one as a single equation for its value function, the Hamilton-Jacobi-Bellman (HJB) equation:
 \begin{equation}
-  \discRte \VFuncCts(\kap) = \max_{\cNrm} \{\uFunc(\cNrm) + \VFuncCts'(\kap)(\fFunc(\kap)-\cNrm-(\PopnGroRte+\deprRte)\kap)\} = \max_{\cNrm} \Ham(\kap,\cNrm,\VFuncCts'(\kap)) . \label{eq:HVD-hjb}
+  \discRte \VFuncCts(\kNrm) = \max_{\cNrm} \{\uFunc(\cNrm) + \VFuncCts'(\kNrm)(\fFunc(\kNrm)-\cNrm-(\PopnGroRte+\deprRte)\kNrm)\} = \max_{\cNrm} \Ham(\kNrm,\cNrm,\VFuncCts'(\kNrm)) . \label{eq:HVD-hjb}
 \end{equation}
-It is the \hyperref[eq:HVD-bellman]{Bellman equation} taken to continuous time. Read as an asset-pricing equation, it says that the return required on the value of the problem, $\discRte \VFuncCts(\kap)$, equals the dividend, the flow of utility $\uFunc(\cNrm)$, plus the capital gain, $\VFuncCts'(\kap)\dot{\kap}$. Its maximand is the current-value Hamiltonian with the costate set to $\vk = \VFuncCts'(\kap)$, hence the ``Hamilton'' in its name. Its first-order condition is \hyperref[eq:uceqvk]{the condition for optimal consumption}; and differentiating it with respect to $\kap$, by the envelope theorem, gives $\discRte \VFuncCts'(\kap) = \VFuncCts''(\kap)\dot{\kap} + \VFuncCts'(\kap)(\rfree-\PopnGroRte)$, which, since $\dot{\vk} = \VFuncCts''(\kap)\dot{\kap}$, is \hyperref[eq:lamgrow]{the costate equation}. The Hamiltonian's conditions describe the optimal path from one starting point; the HJB equation describes the whole value function at once, which is what many numerical methods solve for.
+It is the \hyperref[eq:HVD-bellman]{Bellman equation} taken to continuous time. Read as an asset-pricing equation, it says that the return required on the value of the problem, $\discRte \VFuncCts(\kNrm)$, equals the dividend, the flow of utility $\uFunc(\cNrm)$, plus the capital gain, $\VFuncCts'(\kNrm)\dot{\kNrm}$. Its maximand is the current-value Hamiltonian with the costate set to $\vk = \VFuncCts'(\kNrm)$, hence the ``Hamilton'' in its name. Its first-order condition is \hyperref[eq:uceqvk]{the condition for optimal consumption}; and differentiating it with respect to $\kNrm$, by the envelope theorem, gives $\discRte \VFuncCts'(\kNrm) = \VFuncCts''(\kNrm)\dot{\kNrm} + \VFuncCts'(\kNrm)(\rfree-\PopnGroRte)$, which, since $\dot{\vk} = \VFuncCts''(\kNrm)\dot{\kNrm}$, is \hyperref[eq:lamgrow]{the costate equation}. The Hamiltonian's conditions describe the optimal path from one starting point; the HJB equation describes the whole value function at once, which is what many numerical methods solve for.
 
 Benjamin Moll's \href{https://benjaminmoll.com/wp-content/uploads/2019/07/Lecture3_2149.pdf}{lecture notes on HJB equations} derive the equation from the discrete-time Bellman equation of the neoclassical growth model and show its connection to the Hamiltonian; Wikipedia's \href{https://en.wikipedia.org/wiki/Hamilton\%E2\%80\%93Jacobi\%E2\%80\%93Bellman_equation}{article on the HJB equation} states it in general. \citet{achdouHACT} write the problem of each household facing uninsurable income risk as an HJB equation and the distribution of wealth as a Kolmogorov forward equation, which makes a heterogeneous-agent model a system of two partial differential equations; theirs is the form much of the modern continuous-time literature in macroeconomics uses.
 
@@ -173,12 +173,12 @@ Each condition of the continuous-time solution, beside its discrete-time counter
 \begin{equation*}
 \begin{array}{lll}
   & \text{continuous time} & \text{discrete time}
-\\ \text{value} & \discRte\VFuncCts(\kap) & \VFunc(\mNrm_{t})=\max_{\cNrm_{t}}\{\uFunc(\cNrm_{t})
-\\ & \quad {}=\max_{\cNrm}\Ham(\kap,\cNrm,\VFuncCts'(\kap)) & \quad {}+\DiscFac\VFunc(\mNrm_{t+1})\}
-\\ \text{consumption} & \uFunc^{\prime}(\cNrm)=\vk=\VFuncCts'(\kap) & \uFunc^{\prime}(\cNrm_{t})=\VFunc^{\prime}(\mNrm_{t})
+\\ \text{value} & \discRte\VFuncCts(\kNrm) & \VFunc(\mNrm_{t})=\max_{\cNrm_{t}}\{\uFunc(\cNrm_{t})
+\\ & \quad {}=\max_{\cNrm}\Ham(\kNrm,\cNrm,\VFuncCts'(\kNrm)) & \quad {}+\DiscFac\VFunc(\mNrm_{t+1})\}
+\\ \text{consumption} & \uFunc^{\prime}(\cNrm)=\vk=\VFuncCts'(\kNrm) & \uFunc^{\prime}(\cNrm_{t})=\VFunc^{\prime}(\mNrm_{t})
 \\ \text{marginal value} & \dot{\vk}/\vk=\discRte-(\rfree-\PopnGroRte) & \VFunc^{\prime}(\mNrm_{t})=\DiscFac\Rfree_{t+1}\VFunc^{\prime}(\mNrm_{t+1})
-\\ \text{resources} & \dot{\kap}=\fFunc(\kap)-\cNrm-(\PopnGroRte+\deprRte)\kap & \kap_{t+1}=(\mNrm_{t}-\cNrm_{t})/(1+\PopnGroRte)
-\\ \text{transversality} & \lim_{t\rightarrow\infty}e^{-\discRte t}\vk\kap=0 & \lim_{t\rightarrow\infty}\DiscFac^{t}\uFunc^{\prime}(\cNrm_{t})\kap_{t}=0
+\\ \text{resources} & \dot{\kNrm}=\fFunc(\kNrm)-\cNrm-(\PopnGroRte+\deprRte)\kNrm & \kNrm_{t+1}=(\mNrm_{t}-\cNrm_{t})/(1+\PopnGroRte)
+\\ \text{transversality} & \lim_{t\rightarrow\infty}e^{-\discRte t}\vk\kNrm=0 & \lim_{t\rightarrow\infty}\DiscFac^{t}\uFunc^{\prime}(\cNrm_{t})\kNrm_{t}=0
 \\ \text{consumption growth} & \dot{\cNrm}/\cNrm=\CRRA^{-1}(\rfree-\PopnGroRte-\discRte) & \cNrm_{t+1}/\cNrm_{t}=(\DiscFac\Rfree_{t+1})^{1/\CRRA}
 \end{array}
 \end{equation*}
