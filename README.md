@@ -1,3 +1,6 @@
+> **This repository has moved to [llorracc/HamiltonianVSDiscrete](https://github.com/llorracc/HamiltonianVSDiscrete).** This copy is archived and
+> is no longer updated; the current handout, its notebook and its history are there.
+
 # Ramsey Growth in Discrete and Continuous Time
 
 A handout for JHU Econ 180.603 (Intertemporal Choice): it solves a continuous-time version of the
